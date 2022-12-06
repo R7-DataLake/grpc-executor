@@ -1,0 +1,15 @@
+version: "3"
+services:
+  node-grpc-server:
+    image: "registry.gitlab.com/siteslave/node-grpc-server:latest"
+    container_name: "node-grpc-server"
+    ports:
+      - 50051:50051
+
+    volumes:
+      - ./config-docker:/home/grpc/config
+
+    extra_hosts: 
+    - "host.docker.internal:host-gateway"
+
+    restart: always
