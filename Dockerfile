@@ -4,7 +4,7 @@ WORKDIR /home/grpc
 
 COPY . .
 
-RUN npm ci --only=production
+RUN npm i --only=production
 
 EXPOSE 50051
 
