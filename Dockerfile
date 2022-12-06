@@ -6,8 +6,10 @@ COPY . .
 
 RUN npm i --only=production
 
-RUN cp /usr/share/zoneinfo/Asia/Bangkok /etc/localtime \
-    && echo "Asia/Bangkok" > /etc/timezone
+RUN apk update && \
+  apk add --no-cache tzdata && \
+  cp /usr/share/zoneinfo/Asia/Bangkok /etc/localtime \
+  && echo "Asia/Bangkok" > /etc/timezone
 
 EXPOSE 50051
 
