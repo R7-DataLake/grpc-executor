@@ -3,3 +3,4 @@ config
 _config
 Dockerfile
 package-lock.json
+.gitlab-ci.yml

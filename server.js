@@ -7,7 +7,7 @@ require('dotenv').config({ path: path.resolve(__dirname, './config') })
 
 const PROTO_PATH = path.resolve(__dirname, './protos/emr.proto')
 
-const HOSTPORT = `0.0.0.0:50051`
+const HOSTPORT = '0.0.0.0:50051'
 
 const logger = async (ctx, next) => {
   const start = new Date()
