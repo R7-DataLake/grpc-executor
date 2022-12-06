@@ -1,0 +1,5 @@
+{
+  "name": "node-grpc-server",
+  "script": "server.js",
+  "instances": "4"
+}
