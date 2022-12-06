@@ -1,0 +1,22 @@
+{
+  "name": "grpc-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.7.3",
+    "@grpc/proto-loader": "^0.7.3",
+    "@malijs/jwt": "^0.4.0",
+    "dotenv": "^16.0.3",
+    "knex": "^2.3.0",
+    "lodash": "^4.17.21",
+    "mali": "^0.47.1",
+    "pg": "^8.8.0"
+  }
+}
