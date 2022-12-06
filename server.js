@@ -3,6 +3,8 @@ const Mali = require('mali')
 
 const emr = require('./handlers/emr')
 
+let app
+
 require('dotenv').config({ path: path.resolve(__dirname, './config') })
 
 const PROTO_PATH = path.resolve(__dirname, './protos/emr.proto')
@@ -17,7 +19,7 @@ const logger = async (ctx, next) => {
 }
 
 const main = () => {
-  const app = new Mali(PROTO_PATH)
+  app = new Mali(PROTO_PATH)
 
   app.on('error', (err, ctx) => {
     console.error('server error for call %s of type %s', ctx.name, ctx.type, err);
@@ -31,5 +33,15 @@ const main = () => {
   app.start(HOSTPORT)
   console.log(`EMR service running at ${HOSTPORT}`)
 }
+
+const shutdown = async (err) => {
+  if (err) console.error(err)
+  await app.close()
+  process.exit()
+}
+
+process.on('uncaughtException', shutdown)
+process.on('SIGINT', shutdown)
+process.on('SIGTERM', shutdown)
 
 main()
