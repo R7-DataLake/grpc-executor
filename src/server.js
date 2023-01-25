@@ -28,6 +28,18 @@ const main = () => {
   app.use(logger)
   // Services
   app.use('SavePerson', ingress.savePerson)
+  app.use('SaveOpd', ingress.saveOpd)
+  app.use('SaveChronic', ingress.saveChronic)
+  app.use('SaveOpdx', ingress.saveOpdx)
+  app.use('SaveOpop', ingress.saveOpop)
+  app.use('SaveIpd', ingress.saveIpd)
+  app.use('SaveIpdx', ingress.saveIpdx)
+  app.use('SaveIpop', ingress.saveIpop)
+  app.use('SaveDrug', ingress.saveDrug)
+  app.use('SaveLab', ingress.saveLab)
+  app.use('SaveAppoint', ingress.saveAppoint)
+  app.use('SaveDrugallergy', ingress.saveDrugallergy)
+
   // Start app
   app.start(HOSTPORT)
 

@@ -1,5 +1,5 @@
 {
   "name": "grpc-server-executor",
   "script": "src/server.js",
-  "instances": "4"
+  "instances": "max"
 }
