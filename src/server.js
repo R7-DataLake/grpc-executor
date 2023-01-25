@@ -1,5 +1,7 @@
 const path = require('path')
 const Mali = require('mali')
+const fs = require('fs')
+const grpc = require('@grpc/grpc-js')
 
 const ingress = require('./handlers/ingress')
 
@@ -40,9 +42,16 @@ const main = () => {
   app.use('SaveAppoint', ingress.saveAppoint)
   app.use('SaveDrugallergy', ingress.saveDrugallergy)
 
-  // Start app
-  app.start(HOSTPORT)
 
+  let credentials = grpc.ServerCredentials.createSsl(
+    fs.readFileSync('./certs/ca.crt'), [{
+      cert_chain: fs.readFileSync('./certs/server.crt'),
+      private_key: fs.readFileSync('./certs/server.key')
+    }], true);
+
+
+  // Start app
+  app.start(HOSTPORT, credentials)
   console.log(`Ingress service running at ${HOSTPORT}`)
 }
 

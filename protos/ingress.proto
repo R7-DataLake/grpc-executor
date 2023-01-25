@@ -4,7 +4,7 @@ import "google/protobuf/empty.proto";
 
 package ingress;
 
-service Ingress {
+service IngressService {
   rpc SavePerson (PersonRequest) returns (google.protobuf.Empty) {}
   rpc SaveOpd (OpdRequest) returns (google.protobuf.Empty) {}
   rpc SaveChronic (ChronicRequest) returns (google.protobuf.Empty) {}
