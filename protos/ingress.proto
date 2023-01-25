@@ -6,6 +6,7 @@ package ingress;
 
 service Ingress {
   rpc SavePerson (PersonRequest) returns (google.protobuf.Empty) {}
+  rpc SaveOpd (OpdRequest) returns (google.protobuf.Empty) {}
 }
 
 message PersonRequest {
@@ -31,6 +32,34 @@ message PersonRequest {
     string dUpdate = 18;
   }
 
-  repeated Person person = 2;
+  repeated Person data = 2;
+}
+
+message OpdRequest {
+
+  message Opd {
+    string hospcode = 1;
+    string hn = 2;
+    string clinic = 3;
+    string dateServ = 4;
+    string timeServ = 5;
+    string seq = 6;
+    string chiefcomp = 7;
+    uint32 btemp = 8;
+    uint32 sbp = 9;
+    uint32 dbp = 10;
+    uint32 pr = 11;
+    uint32 rr = 12;
+    string typein = 13;
+    string typeout = 14;
+    string insType = 15;
+    string insNumber = 16;
+    string InsHospmain = 17;
+    string InsHospsub = 18;
+    string diagText = 19;
+    string dUpdate = 20;
+  }
+
+  repeated Opd data = 2;
 }
 
