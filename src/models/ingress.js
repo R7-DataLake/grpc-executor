@@ -2,7 +2,7 @@ const connection = require('../db/connection')
 
 const savePerson = async (data) => {
   const db = await connection.getConnection();
-  return await db('person')
+  return db('person')
     .insert(data)
     .onConflict(['hospcode', 'hn'])
     .merge();
@@ -10,7 +10,7 @@ const savePerson = async (data) => {
 
 const saveOpd = async (data) => {
   const db = await connection.getConnection();
-  return await db('opd')
+  return db('opd')
     .insert(data)
     .onConflict(['hospcode', 'hn', 'date_serv', 'seq'])
     .merge();
@@ -18,7 +18,7 @@ const saveOpd = async (data) => {
 
 const saveChronic = async (data) => {
   const db = await connection.getConnection();
-  return await db('chronic')
+  return db('chronic')
     .insert(data)
     .onConflict(['hospcode', 'hn', 'chronic'])
     .merge();
@@ -26,7 +26,7 @@ const saveChronic = async (data) => {
 
 const saveOpdx = async (data) => {
   const db = await connection.getConnection();
-  return await db('opdx')
+  return db('opdx')
     .insert(data)
     .onConflict(['hospcode', 'hn', 'seq', 'diag'])
     .merge();
@@ -34,7 +34,7 @@ const saveOpdx = async (data) => {
 
 const saveOpop = async (data) => {
   const db = await connection.getConnection();
-  return await db('opop')
+  return db('opop')
     .insert(data)
     .onConflict(['hospcode', 'hn', 'seq', 'oper'])
     .merge();
@@ -42,7 +42,7 @@ const saveOpop = async (data) => {
 
 const saveIpd = async (data) => {
   const db = await connection.getConnection();
-  return await db('ipd')
+  return db('ipd')
     .insert(data)
     .onConflict(['hospcode', 'hn', 'an'])
     .merge();
@@ -50,7 +50,7 @@ const saveIpd = async (data) => {
 
 const saveIpdx = async (data) => {
   const db = await connection.getConnection();
-  return await db('ipdx')
+  return db('ipdx')
     .insert(data)
     .onConflict(['hospcode', 'hn', 'an', 'diag'])
     .merge();
@@ -58,7 +58,7 @@ const saveIpdx = async (data) => {
 
 const saveIpop = async (data) => {
   const db = await connection.getConnection();
-  return await db('ipop')
+  return db('ipop')
     .insert(data)
     .onConflict(['hospcode', 'hn', 'an', 'oper'])
     .merge();
@@ -66,7 +66,7 @@ const saveIpop = async (data) => {
 
 const saveDrug = async (data) => {
   const db = await connection.getConnection();
-  return await db('drug')
+  return db('drug')
     .insert(data)
     .onConflict(['hospcode', 'hn', 'an', 'did'])
     .merge();
@@ -74,7 +74,7 @@ const saveDrug = async (data) => {
 
 const saveLab = async (data) => {
   const db = await connection.getConnection();
-  return await db('lab')
+  return db('lab')
     .insert(data)
     .onConflict(['hospcode', 'hn', 'seq', 'labtest'])
     .merge();
@@ -82,7 +82,7 @@ const saveLab = async (data) => {
 
 const saveAppoint = async (data) => {
   const db = await connection.getConnection();
-  return await db('appoint')
+  return db('appoint')
     .insert(data)
     .onConflict(['hospcode', 'hn', 'appoint_date', 'clinic'])
     .merge();
@@ -90,7 +90,7 @@ const saveAppoint = async (data) => {
 
 const saveDrugallergy = async (data) => {
   const db = await connection.getConnection();
-  return await db('drugallergy')
+  return db('drugallergy')
     .insert(data)
     .onConflict(['hospcode', 'hn', 'dname'])
     .merge();
