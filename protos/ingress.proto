@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+package ingress;
+
+service Ingress {
+  rpc SavePerson (PersonRequest) returns (google.protobuf.Empty) {}
+}
+
+message PersonRequest {
+
+  message Person {
+    string hospcode = 1;
+    string hn = 2;
+    string cid = 3;
+    string title = 4;
+    string fname = 5;
+    string lname = 6;
+    string birth = 7;
+    string sex = 8;
+    string marriage = 9;
+    string occupation = 10;
+    string nation = 11;
+    string idtype = 12;
+    string changwat = 13;
+    string amphur = 14;
+    string tambol = 15;
+    string moo = 16;
+    string typearea = 17;
+    string dUpdate = 18;
+  }
+
+  repeated Person person = 2;
+}
+

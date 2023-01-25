@@ -1,13 +1,13 @@
 const path = require('path')
 const Mali = require('mali')
 
-const emr = require('./handlers/emr')
+const ingress = require('./handlers/ingress')
 
 let app
 
-require('dotenv').config({ path: path.resolve(__dirname, './config') })
+require('dotenv').config({ path: path.resolve(__dirname, '../config.conf') })
 
-const PROTO_PATH = path.resolve(__dirname, './protos/emr.proto')
+const PROTO_PATH = path.resolve(__dirname, '../protos/ingress.proto')
 
 const HOSTPORT = '0.0.0.0:50051'
 
@@ -26,12 +26,12 @@ const main = () => {
   })
 
   app.use(logger)
-
-  app.use('GetPatient', emr.getPatient)
-  app.use('GetPatientInfo', emr.getPatientInfo)
-
+  // Services
+  app.use('SavePerson', ingress.savePerson)
+  // Start app
   app.start(HOSTPORT)
-  console.log(`EMR service running at ${HOSTPORT}`)
+
+  console.log(`Ingress service running at ${HOSTPORT}`)
 }
 
 const shutdown = async (err) => {
