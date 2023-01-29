@@ -9,7 +9,7 @@ const ingressHandler = new IngressHandler()
 
 let app: any
 
-const PROTO_PATH = path.resolve(__dirname, '../protos/ingress.proto')
+const PROTO_PATH = path.join(__dirname, '../protos/ingress.proto')
 
 const HOSTPORT = '0.0.0.0:50051'
 
@@ -43,10 +43,10 @@ const main = () => {
   app.use('SaveAppoint', ingressHandler.saveAppoint)
   app.use('SaveDrugallergy', ingressHandler.saveDrugallergy)
 
-  let credentials = grpc.ServerCredentials.createSsl(
-    fs.readFileSync(path.resolve(__dirname, '../certs/ca.crt')), [{
-      cert_chain: fs.readFileSync(path.resolve(__dirname, '../certs/server.crt')),
-      private_key: fs.readFileSync(path.resolve(__dirname, '../certs/server.key'))
+  const credentials = grpc.ServerCredentials.createSsl(
+    fs.readFileSync(path.join(__dirname, '../certs/ca.crt')), [{
+      cert_chain: fs.readFileSync(path.join(__dirname, '../certs/server.crt')),
+      private_key: fs.readFileSync(path.join(__dirname, '../certs/server.key'))
     }], true)
 
 
