@@ -2,20 +2,30 @@ FROM node:18-alpine AS build
 
 WORKDIR /app
 
-RUN apk update && \
-  apk add --no-cache tzdata && \
-  cp /usr/share/zoneinfo/Asia/Bangkok /etc/localtime \
-  && echo "Asia/Bangkok" > /etc/timezone
+ENV NODE_ENV === 'production'
 
-RUN wget -qO /bin/pnpm "https://github.com/pnpm/pnpm/releases/latest/download/pnpm-linuxstatic-x64" && chmod +x /bin/pnpm
+RUN apk update && \
+  apk upgrade && \
+  apk add --no-cache \
+  build-base \
+  libtool \
+  autoconf \
+  automake \
+  g++ \
+  make \
+  python3
 
 COPY . .
 
+RUN wget -qO /bin/pnpm "https://github.com/pnpm/pnpm/releases/latest/download/pnpm-linuxstatic-x64" && chmod +x /bin/pnpm
+
 RUN pnpm i && pnpm run build
 
-FROM keymetrics/pm2:18-slim
+RUN rm -rf src
 
-ENV NODE_ENV === 'production'
+RUN rm -rf node_modules && pnpm i --production
+
+FROM keymetrics/pm2:18-slim
 
 COPY --from=build /app /app
 
