@@ -15,6 +15,7 @@
     "@grpc/proto-loader": "^0.7.3",
     "@malijs/jwt": "^0.4.0",
     "dotenv": "^16.0.3",
+    "jsonwebtoken": "^9.0.0",
     "knex": "^2.3.0",
     "lodash": "^4.17.21",
     "luxon": "^3.2.1",
