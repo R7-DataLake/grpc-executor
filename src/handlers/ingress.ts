@@ -6,16 +6,10 @@ const ingressModel = new IngressModel()
 
 export class IngressHandler {
 
-  setErrorResponse(code: any, message: any) {
-    const err: any = new Error(message)
-    err.code = code
-    throw err
-  }
-
   async savePerson(ctx: any) {
     try {
-      const data = ctx.req.data
 
+      const data = ctx.req.data
       const items = data.map((v: any) => {
         const birth = DateTime.fromFormat(v.birth, "yyyyMMdd")
         const d_updated = DateTime.fromFormat(v.dUpdate, "yyyyMMddHHmmss")
@@ -24,7 +18,6 @@ export class IngressHandler {
         v.d_update = d_updated.toFormat('yyyy-MM-dd HH:mm:ss')
         // remove unused field
         delete v.dUpdate
-
         return v
       })
 
@@ -34,7 +27,8 @@ export class IngressHandler {
       console.error(error)
       const code = grpc.status.INTERNAL
       const message = "INTERNAL ERROR"
-      this.setErrorResponse(code, message)
+      ctx.status = code
+      return ctx.res = new Error(message)
     }
   }
 
@@ -64,7 +58,8 @@ export class IngressHandler {
       console.error(error)
       const code = grpc.status.INTERNAL
       const message = "INTERNAL ERROR"
-      this.setErrorResponse(code, message)
+      ctx.status = code
+      return ctx.res = new Error(message)
     }
   }
 
@@ -103,7 +98,8 @@ export class IngressHandler {
       console.error(error)
       const code = grpc.status.INTERNAL
       const message = "INTERNAL ERROR"
-      this.setErrorResponse(code, message)
+      ctx.status = code
+      return ctx.res = new Error(message)
     }
   }
 
@@ -129,7 +125,8 @@ export class IngressHandler {
       console.error(error)
       const code = grpc.status.INTERNAL
       const message = "INTERNAL ERROR"
-      this.setErrorResponse(code, message)
+      ctx.status = code
+      return ctx.res = new Error(message)
     }
   }
 
@@ -155,7 +152,8 @@ export class IngressHandler {
       console.error(error)
       const code = grpc.status.INTERNAL
       const message = "INTERNAL ERROR"
-      this.setErrorResponse(code, message)
+      ctx.status = code
+      return ctx.res = new Error(message)
     }
   }
 
@@ -189,7 +187,8 @@ export class IngressHandler {
       console.error(error)
       const code = grpc.status.INTERNAL
       const message = "INTERNAL ERROR"
-      this.setErrorResponse(code, message)
+      ctx.status = code
+      return ctx.res = new Error(message)
     }
   }
 
@@ -212,7 +211,8 @@ export class IngressHandler {
       console.error(error)
       const code = grpc.status.INTERNAL
       const message = "INTERNAL ERROR"
-      this.setErrorResponse(code, message)
+      ctx.status = code
+      return ctx.res = new Error(message)
     }
   }
 
@@ -244,7 +244,8 @@ export class IngressHandler {
       console.error(error)
       const code = grpc.status.INTERNAL
       const message = "INTERNAL ERROR"
-      this.setErrorResponse(code, message)
+      ctx.status = code
+      return ctx.res = new Error(message)
     }
   }
 
@@ -270,7 +271,8 @@ export class IngressHandler {
       console.error(error)
       const code = grpc.status.INTERNAL
       const message = "INTERNAL ERROR"
-      this.setErrorResponse(code, message)
+      ctx.status = code
+      return ctx.res = new Error(message)
     }
   }
 
@@ -293,7 +295,8 @@ export class IngressHandler {
       console.error(error)
       const code = grpc.status.INTERNAL
       const message = "INTERNAL ERROR"
-      this.setErrorResponse(code, message)
+      ctx.status = code
+      return ctx.res = new Error(message)
     }
   }
 
@@ -323,7 +326,8 @@ export class IngressHandler {
       console.error(error)
       const code = grpc.status.INTERNAL
       const message = "INTERNAL ERROR"
-      this.setErrorResponse(code, message)
+      ctx.status = code
+      return ctx.res = new Error(message)
     }
   }
 
@@ -349,7 +353,8 @@ export class IngressHandler {
       console.error(error)
       const code = grpc.status.INTERNAL
       const message = "INTERNAL ERROR"
-      this.setErrorResponse(code, message)
+      ctx.status = code
+      return ctx.res = new Error(message)
     }
   }
 
