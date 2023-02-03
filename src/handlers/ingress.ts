@@ -29,7 +29,7 @@ export class IngressHandler {
       })
 
       await ingressModel.savePerson(items)
-      ctx.res = {}
+      ctx.res = { ok: true }
     } catch (error) {
       console.error(error)
       const code = grpc.status.INTERNAL
@@ -59,7 +59,7 @@ export class IngressHandler {
       })
 
       await ingressModel.saveChronic(items)
-      ctx.res = {}
+      ctx.res = { ok: true }
     } catch (error) {
       console.error(error)
       const code = grpc.status.INTERNAL
@@ -98,7 +98,7 @@ export class IngressHandler {
       })
 
       await ingressModel.saveOpd(items)
-      ctx.res = {}
+      ctx.res = { ok: true }
     } catch (error) {
       console.error(error)
       const code = grpc.status.INTERNAL
@@ -124,7 +124,7 @@ export class IngressHandler {
       })
 
       await ingressModel.saveOpdx(items)
-      ctx.res = {}
+      ctx.res = { ok: true }
     } catch (error) {
       console.error(error)
       const code = grpc.status.INTERNAL
@@ -150,7 +150,7 @@ export class IngressHandler {
       })
 
       await ingressModel.saveOpop(items)
-      ctx.res = {}
+      ctx.res = { ok: true }
     } catch (error) {
       console.error(error)
       const code = grpc.status.INTERNAL
@@ -184,7 +184,7 @@ export class IngressHandler {
       })
 
       await ingressModel.saveIpd(items)
-      ctx.res = {}
+      ctx.res = { ok: true }
     } catch (error) {
       console.error(error)
       const code = grpc.status.INTERNAL
@@ -207,7 +207,7 @@ export class IngressHandler {
       })
 
       await ingressModel.saveIpdx(items)
-      ctx.res = {}
+      ctx.res = { ok: true }
     } catch (error) {
       console.error(error)
       const code = grpc.status.INTERNAL
@@ -239,7 +239,7 @@ export class IngressHandler {
       })
 
       await ingressModel.saveIpop(items)
-      ctx.res = {}
+      ctx.res = { ok: true }
     } catch (error) {
       console.error(error)
       const code = grpc.status.INTERNAL
@@ -265,7 +265,7 @@ export class IngressHandler {
       })
 
       await ingressModel.saveDrug(items)
-      ctx.res = {}
+      ctx.res = { ok: true }
     } catch (error) {
       console.error(error)
       const code = grpc.status.INTERNAL
@@ -288,7 +288,7 @@ export class IngressHandler {
       })
 
       await ingressModel.saveLab(items)
-      ctx.res = {}
+      ctx.res = { ok: true }
     } catch (error) {
       console.error(error)
       const code = grpc.status.INTERNAL
@@ -318,7 +318,7 @@ export class IngressHandler {
       })
 
       await ingressModel.saveAppoint(items)
-      ctx.res = {}
+      ctx.res = { ok: true }
     } catch (error) {
       console.error(error)
       const code = grpc.status.INTERNAL
@@ -344,7 +344,7 @@ export class IngressHandler {
       })
 
       await ingressModel.saveDrugallergy(items)
-      ctx.res = {}
+      ctx.res = { ok: true }
     } catch (error) {
       console.error(error)
       const code = grpc.status.INTERNAL
