@@ -1,9 +1,11 @@
-import { IngressHandler } from "./handlers/ingress"
 
 const path = require('path')
 const Mali = require('mali')
-const fs = require('fs')
-const grpc = require('@grpc/grpc-js')
+const jwt = require('jsonwebtoken')
+
+import { IngressHandler } from "./handlers/ingress"
+
+const secret = process.env.R7PLATFORM_GRPC_EXECUTOR_SECRET_KEY || 'notMgRJEnTJWZzM84UCcYfWZOCQHyN2r'
 
 const ingressHandler = new IngressHandler()
 
@@ -13,12 +15,30 @@ const PROTO_PATH = path.join(__dirname, '../protos/ingress.proto')
 
 const HOSTPORT = '0.0.0.0:50051'
 
+const verifyToken = (ctx: any, next: any) => {
+
+  const authorization = ctx.request.metadata.authorization
+  if (!authorization) {
+    return ctx.res = new Error("authorization header is required")
+  }
+
+  const token = authorization.replace('Bearer ', '')
+
+  try {
+    ctx.user = jwt.verify(token, secret)
+  } catch (err: any) {
+    ctx.status = 401
+    return ctx.res = new Error("Unauthorized")
+  }
+  return next()
+};
+
 const logger = async (ctx: any, next: any) => {
   const start = new Date()
   await next()
   const current = new Date()
   const ms = current.getTime() - start.getTime()
-  console.log('%s [%s] - %s ms', ctx.name, ctx.type, ms)
+  console.log('%s : %s [%s] - %s ms', ctx.user.sub, ctx.name, ctx.type, ms)
 }
 
 const main = () => {
@@ -28,7 +48,10 @@ const main = () => {
     console.error('server error for call %s of type %s', ctx.name, ctx.type, err)
   })
 
+  // Middleware
+  app.use(verifyToken)
   app.use(logger)
+
   // Services
   app.use('SavePerson', ingressHandler.savePerson)
   app.use('SaveOpd', ingressHandler.saveOpd)
@@ -43,15 +66,8 @@ const main = () => {
   app.use('SaveAppoint', ingressHandler.saveAppoint)
   app.use('SaveDrugallergy', ingressHandler.saveDrugallergy)
 
-  const credentials = grpc.ServerCredentials.createSsl(
-    fs.readFileSync(path.join(__dirname, '../certs/ca.crt')), [{
-      cert_chain: fs.readFileSync(path.join(__dirname, '../certs/server.crt')),
-      private_key: fs.readFileSync(path.join(__dirname, '../certs/server.key'))
-    }], true)
-
-
   // Start app
-  app.start(HOSTPORT, credentials)
+  app.start(HOSTPORT)
   console.log(`Ingress service running at ${HOSTPORT}`)
 }
 
