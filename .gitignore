@@ -2,3 +2,6 @@ node_modules/*
 package-lock.json
 config.conf
 config-docker
+certs/*
+dist/*
+run.sh

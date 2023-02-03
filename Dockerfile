@@ -1,16 +1,32 @@
-FROM keymetrics/pm2:14-alpine
+FROM node:18-alpine AS builder
 
-WORKDIR /home/grpc
+WORKDIR /app
+
+RUN apk update && \
+  apk upgrade && \
+  apk add --no-cache \
+  build-base \
+  libtool \
+  autoconf \
+  automake \
+  g++ \
+  make \
+  python3
 
 COPY . .
 
-RUN npm i --only=production
+RUN wget -qO /bin/pnpm "https://github.com/pnpm/pnpm/releases/latest/download/pnpm-linuxstatic-x64" && chmod +x /bin/pnpm
 
-RUN apk update && \
-  apk add --no-cache tzdata && \
-  cp /usr/share/zoneinfo/Asia/Bangkok /etc/localtime \
-  && echo "Asia/Bangkok" > /etc/timezone
+RUN pnpm i && pnpm run build
+
+RUN rm -rf src
+
+RUN rm -rf node_modules && pnpm i --production
+
+FROM keymetrics/pm2:18-slim
+
+COPY --from=builder /app /app
 
 EXPOSE 50051
 
-CMD [ "pm2-runtime", "start", "pm2.json" ]
+CMD ["pm2-runtime", "--json", "/app/process.json"]
