@@ -1,7 +1,7 @@
 version: "3"
 services:
   grpc-executor:
-    image: "mophos/r7platform-grpc-server-executor"
+    image: "mophos/r7platform-mophos/r7platform-grpc-executor"
     container_name: "grpc-executor"
     environment:
       - NODE_ENV=development
