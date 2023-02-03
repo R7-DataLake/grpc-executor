@@ -1,6 +1,6 @@
-import { IngressModel } from "../models/ingress";
+import { IngressModel } from "../models/ingress"
 
-const { DateTime } = require('luxon');
+const { DateTime } = require('luxon')
 const grpc = require('@grpc/grpc-js')
 const ingressModel = new IngressModel()
 
