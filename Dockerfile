@@ -1,8 +1,6 @@
-FROM node:18-alpine AS build
+FROM node:18-alpine AS builder
 
 WORKDIR /app
-
-ENV NODE_ENV === 'production'
 
 RUN apk update && \
   apk upgrade && \
@@ -27,7 +25,7 @@ RUN rm -rf node_modules && pnpm i --production
 
 FROM keymetrics/pm2:18-slim
 
-COPY --from=build /app /app
+COPY --from=builder /app /app
 
 EXPOSE 50051
 
