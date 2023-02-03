@@ -30,8 +30,9 @@ const verifyToken = (ctx: any, next: any) => {
     ctx.status = 401
     return ctx.res = new Error("Unauthorized")
   }
+
   return next()
-};
+}
 
 const logger = async (ctx: any, next: any) => {
   const start = new Date()

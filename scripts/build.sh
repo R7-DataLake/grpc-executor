@@ -1,1 +1,1 @@
-docker build -t mophos/r7platform-grpc-server-executor . --no-cache
+docker build -t mophos/r7platform-grpc-executor . --no-cache

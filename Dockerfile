@@ -2,16 +2,7 @@ FROM node:18-alpine AS builder
 
 WORKDIR /app
 
-RUN apk update && \
-  apk upgrade && \
-  apk add --no-cache \
-  build-base \
-  libtool \
-  autoconf \
-  automake \
-  g++ \
-  make \
-  python3
+RUN apk add --no-cache g++ python3
 
 COPY . .
 
