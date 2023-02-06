@@ -83,6 +83,7 @@ export class IngressHandler {
         // remove unused field
         delete v.dUpdate
         delete v.dateServ
+        delete v.timeServ
         delete v.insType
         delete v.insNumber
         delete v.insHospmain
