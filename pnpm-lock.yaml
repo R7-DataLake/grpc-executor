@@ -1,64 +1,64 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@grpc/grpc-js': ^1.7.3
-  '@grpc/proto-loader': ^0.7.3
+  '@grpc/grpc-js': ^1.8.9
+  '@grpc/proto-loader': ^0.7.5
   '@malijs/jwt': ^0.4.0
-  '@types/node': ^18.11.18
+  '@types/node': ^18.13.0
   dotenv: ^16.0.3
   gulp: ^4.0.2
   gulp-cli: ^2.3.0
   gulp-typescript: 6.0.0-alpha.1
   gulp-uglify: ^3.0.2
   jsonwebtoken: ^9.0.0
-  knex: ^2.3.0
+  knex: ^2.4.2
   lodash: ^4.17.21
   luxon: ^3.2.1
   mali: ^0.47.1
   nodemon: ^2.0.20
-  pg: ^8.8.0
-  typescript: ^4.9.4
+  pg: ^8.9.0
+  typescript: ^4.9.5
 
 dependencies:
-  '@grpc/grpc-js': 1.8.5
-  '@grpc/proto-loader': 0.7.4
+  '@grpc/grpc-js': 1.8.9
+  '@grpc/proto-loader': 0.7.5
   '@malijs/jwt': 0.4.0
   dotenv: 16.0.3
   jsonwebtoken: 9.0.0
-  knex: 2.4.2_pg@8.8.0
+  knex: 2.4.2_pg@8.9.0
   lodash: 4.17.21
   luxon: 3.2.1
-  mali: 0.47.1_6altj535i6tvl6e7fww47mtdmu
-  pg: 8.8.0
+  mali: 0.47.1_cydorwdodw5r4yyqjmzgbhslru
+  pg: 8.9.0
 
 devDependencies:
-  '@types/node': 18.11.18
+  '@types/node': 18.13.0
   gulp: 4.0.2
   gulp-cli: 2.3.0
-  gulp-typescript: 6.0.0-alpha.1_typescript@4.9.4
+  gulp-typescript: 6.0.0-alpha.1_typescript@4.9.5
   gulp-uglify: 3.0.2
   nodemon: 2.0.20
-  typescript: 4.9.4
+  typescript: 4.9.5
 
 packages:
 
-  /@grpc/grpc-js/1.8.5:
-    resolution: {integrity: sha512-+hpNMAz+RdeckGdGRSHj8gjBEv8crcrTZjsagOZtYqCoWu4JXuNqRlxniwxhKFWxNrxZpSMQLmAjIkoDIgFjyQ==}
+  /@grpc/grpc-js/1.8.9:
+    resolution: {integrity: sha512-xzsl2HamhovnZddS/2pMF4Q+FgwINaBvxoFGQ+G54Lo7Xsge36VvfDO/TDkL7FofmrRK/X5weRvwlJh7rKwN4w==}
     engines: {node: ^8.13.0 || >=10.10.0}
     dependencies:
-      '@grpc/proto-loader': 0.7.4
-      '@types/node': 18.11.18
+      '@grpc/proto-loader': 0.7.5
+      '@types/node': 18.13.0
     dev: false
 
-  /@grpc/proto-loader/0.7.4:
-    resolution: {integrity: sha512-MnWjkGwqQ3W8fx94/c1CwqLsNmHHv2t0CFn+9++6+cDphC1lolpg9M2OU0iebIjK//pBNX9e94ho+gjx6vz39w==}
+  /@grpc/proto-loader/0.7.5:
+    resolution: {integrity: sha512-mfcTuMbFowq1wh/Rn5KQl6qb95M21Prej3bewD9dUQMurYGVckGO/Pbe2Ocwto6sD05b/mxZLspvqwx60xO2Rg==}
     engines: {node: '>=6'}
     hasBin: true
     dependencies:
       '@types/long': 4.0.2
       lodash.camelcase: 4.3.0
       long: 4.0.0
-      protobufjs: 7.2.0
+      protobufjs: 7.2.2
       yargs: 16.2.0
     dev: false
 
@@ -154,8 +154,8 @@ packages:
     resolution: {integrity: sha512-MqTGEo5bj5t157U6fA/BiDynNkn0YknVdh48CMPkTSpFTVmvao5UQmm7uEF6xBEo7qIMAlY/JSleYaE6VOdpaA==}
     dev: false
 
-  /@types/node/18.11.18:
-    resolution: {integrity: sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==}
+  /@types/node/18.13.0:
+    resolution: {integrity: sha512-gC3TazRzGoOnoKAhUx+Q0t8S9Tzs74z7m0ipwGpSqQrleP14hKxP4/JUeEQcD3W1/aIpnWl8pHowI7WokuZpXg==}
 
   /abbrev/1.1.1:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}
@@ -313,8 +313,8 @@ packages:
       stream-exhaust: 1.0.2
     dev: true
 
-  /async-each/1.0.5:
-    resolution: {integrity: sha512-5QzqtU3BlagehwmdoqwaS2FBQF2P5eL6vFqXwNsb5jwoEsmtfAXg1ocFvW7I6/gGLFhBMKwcMwZuy7uv/Bo9jA==}
+  /async-each/1.0.6:
+    resolution: {integrity: sha512-c646jH1avxr+aVpndVMeAfYw7wAa6idufrlN3LPA4PmKS0QEGp6PIC9nwz0WQkkvBGAMEki3pFdtxaF39J9vvg==}
     dev: true
 
   /async-settle/1.0.0:
@@ -462,7 +462,7 @@ packages:
     deprecated: Chokidar 2 does not receive security updates since 2019. Upgrade to chokidar 3 with 15x fewer dependencies
     dependencies:
       anymatch: 2.0.0
-      async-each: 1.0.5
+      async-each: 1.0.6
       braces: 2.3.2
       glob-parent: 3.1.0
       inherits: 2.0.4
@@ -690,8 +690,8 @@ packages:
     engines: {node: '>= 0.10'}
     dev: true
 
-  /define-properties/1.1.4:
-    resolution: {integrity: sha512-uckOqKcfaVvtBdsVkdPv3XjveQJsNQqmhXgRi8uhvWWuPYZCNlzT8qAyblUgNoXdHdjMTzAqeGjAoli8f+bzPA==}
+  /define-properties/1.2.0:
+    resolution: {integrity: sha512-xvqAVKGfT1+UAvPwKTVw/njhdQ8ZhXK4lI0bCIuCMrp2up9nPnaDftrLtmpTazqd1o+UY4zgzU+avtMbDP+ldA==}
     engines: {node: '>= 0.4'}
     dependencies:
       has-property-descriptors: 1.0.0
@@ -1196,7 +1196,7 @@ packages:
       - supports-color
     dev: true
 
-  /gulp-typescript/6.0.0-alpha.1_typescript@4.9.4:
+  /gulp-typescript/6.0.0-alpha.1_typescript@4.9.5:
     resolution: {integrity: sha512-KoT0TTfjfT7w3JItHkgFH1T/zK4oXWC+a8xxKfniRfVcA0Fa1bKrIhztYelYmb+95RB80OLMBreknYkdwzdi2Q==}
     engines: {node: '>= 8'}
     peerDependencies:
@@ -1206,7 +1206,7 @@ packages:
       plugin-error: 1.0.1
       source-map: 0.7.4
       through2: 3.0.2
-      typescript: 4.9.4
+      typescript: 4.9.5
       vinyl: 2.2.1
       vinyl-fs: 3.0.3
     dev: true
@@ -1630,7 +1630,7 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /knex/2.4.2_pg@8.8.0:
+  /knex/2.4.2_pg@8.9.0:
     resolution: {integrity: sha512-tMI1M7a+xwHhPxjbl/H9K1kHX+VncEYcvCx5K00M16bWvpYPKAZd6QrCu68PtHAdIZNQPWZn0GVhqVBEthGWCg==}
     engines: {node: '>=12'}
     hasBin: true
@@ -1667,7 +1667,7 @@ packages:
       getopts: 2.3.0
       interpret: 2.2.0
       lodash: 4.17.21
-      pg: 8.8.0
+      pg: 8.9.0
       pg-connection-string: 2.5.0
       rechoir: 0.8.0
       resolve-from: 5.0.0
@@ -1822,15 +1822,15 @@ packages:
       kind-of: 6.0.3
     dev: true
 
-  /mali/0.47.1_6altj535i6tvl6e7fww47mtdmu:
+  /mali/0.47.1_cydorwdodw5r4yyqjmzgbhslru:
     resolution: {integrity: sha512-z/HLlkxAJdJYemGUTqWXjvWiSV6B3xORJS7297f095S/sKoti0MKcxlAftEwC19qW5QWA44UeoIwA079y8SCgQ==}
     engines: {node: '>=14'}
     peerDependencies:
       '@grpc/grpc-js': ^1.6.10
       '@grpc/proto-loader': ^0.3.0 || ^0.4.0 || ^0.5.0 || ^0.6.0 || ^0.7.0
     dependencies:
-      '@grpc/grpc-js': 1.8.5
-      '@grpc/proto-loader': 0.7.4
+      '@grpc/grpc-js': 1.8.9
+      '@grpc/proto-loader': 0.7.5
       '@malijs/call-types': 0.4.0
       '@malijs/compose': 1.3.2
       delegates: 1.0.0
@@ -2027,7 +2027,7 @@ packages:
     engines: {node: '>= 0.4'}
     dependencies:
       call-bind: 1.0.2
-      define-properties: 1.1.4
+      define-properties: 1.2.0
       has-symbols: 1.0.3
       object-keys: 1.1.1
     dev: true
@@ -2168,16 +2168,16 @@ packages:
     engines: {node: '>=4.0.0'}
     dev: false
 
-  /pg-pool/3.5.2_pg@8.8.0:
+  /pg-pool/3.5.2_pg@8.9.0:
     resolution: {integrity: sha512-His3Fh17Z4eg7oANLob6ZvH8xIVen3phEZh2QuyrIl4dQSDVEabNducv6ysROKpDNPSD+12tONZVWfSgMvDD9w==}
     peerDependencies:
       pg: '>=8.0'
     dependencies:
-      pg: 8.8.0
+      pg: 8.9.0
     dev: false
 
-  /pg-protocol/1.5.0:
-    resolution: {integrity: sha512-muRttij7H8TqRNu/DxrAJQITO4Ac7RmX3Klyr/9mJEOBeIpgnF8f9jAfRz5d3XwQZl5qBjF9gLsUtMPJE0vezQ==}
+  /pg-protocol/1.6.0:
+    resolution: {integrity: sha512-M+PDm637OY5WM307051+bsDia5Xej6d9IR4GwJse1qA1DIhiKlksvrneZOYQq42OM+spubpcNYEo2FcKQrDk+Q==}
     dev: false
 
   /pg-types/2.2.0:
@@ -2191,8 +2191,8 @@ packages:
       postgres-interval: 1.2.0
     dev: false
 
-  /pg/8.8.0:
-    resolution: {integrity: sha512-UXYN0ziKj+AeNNP7VDMwrehpACThH7LUl/p8TDFpEUuSejCUIwGSfxpHsPvtM6/WXFy6SU4E5RG4IJV/TZAGjw==}
+  /pg/8.9.0:
+    resolution: {integrity: sha512-ZJM+qkEbtOHRuXjmvBtOgNOXOtLSbxiMiUVMgE4rV6Zwocy03RicCVvDXgx8l4Biwo8/qORUnEqn2fdQzV7KCg==}
     engines: {node: '>= 8.0.0'}
     peerDependencies:
       pg-native: '>=3.0.1'
@@ -2203,8 +2203,8 @@ packages:
       buffer-writer: 2.0.0
       packet-reader: 1.0.0
       pg-connection-string: 2.5.0
-      pg-pool: 3.5.2_pg@8.8.0
-      pg-protocol: 1.5.0
+      pg-pool: 3.5.2_pg@8.9.0
+      pg-protocol: 1.6.0
       pg-types: 2.2.0
       pgpass: 1.0.5
     dev: false
@@ -2288,8 +2288,8 @@ packages:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
     dev: true
 
-  /protobufjs/7.2.0:
-    resolution: {integrity: sha512-hYCqTDuII4iJ4stZqiuGCSU8xxWl5JeXYpwARGtn/tWcKCAro6h3WQz+xpsNbXW0UYqpmTQFEyFWO0G0Kjt64g==}
+  /protobufjs/7.2.2:
+    resolution: {integrity: sha512-++PrQIjrom+bFDPpfmqXfAGSQs40116JRrqqyf53dymUMvvb5d/LMRyicRoF1AUKoXVS1/IgJXlEgcpr4gTF3Q==}
     engines: {node: '>=12.0.0'}
     requiresBuild: true
     dependencies:
@@ -2303,7 +2303,7 @@ packages:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
-      '@types/node': 18.11.18
+      '@types/node': 18.13.0
       long: 5.2.1
     dev: false
 
@@ -2841,8 +2841,8 @@ packages:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
     dev: true
 
-  /typescript/4.9.4:
-    resolution: {integrity: sha512-Uz+dTXYzxXXbsFpM86Wh3dKCxrQqUcVMxwU54orwlJjOpO3ao8L7j5lH+dWfTwgCwIuM9GQ2kvVotzYJMXTBZg==}
+  /typescript/4.9.5:
+    resolution: {integrity: sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==}
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true
