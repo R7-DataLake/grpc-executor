@@ -69,7 +69,7 @@ const main = () => {
 
   // Start app
   app.start(HOSTPORT)
-  console.log(`Ingress service running at ${HOSTPORT}`)
+  console.log(`gRPC Executor service running at ${HOSTPORT}`)
 }
 
 const shutdown = async (err: any) => {
