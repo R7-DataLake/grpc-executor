@@ -164,15 +164,11 @@ export class IngressHandler {
 
       const items = data.map((v: any) => {
         const dateadm = DateTime.fromFormat(v.dateadm, "yyyyMMdd")
-        const timeadm = DateTime.fromFormat(v.timeadm, "HHmm")
         const datedsc = DateTime.fromFormat(v.datedsc, "yyyyMMdd")
-        const timedsc = DateTime.fromFormat(v.timedsc, "HHmm")
         const d_updated = DateTime.fromFormat(v.dUpdate, "yyyyMMddHHmmss")
 
         v.dateadm = dateadm.toFormat('yyyy-MM-dd')
         v.datedsc = datedsc.toFormat('yyyy-MM-dd')
-        v.timeadm = timeadm.toFormat('HH:mm')
-        v.timedsc = timedsc.toFormat('HH:mm')
         v.adm_w = v.admW
         v.d_update = d_updated.toFormat('yyyy-MM-dd HH:mm:ss')
         // remove unused field
@@ -257,7 +253,6 @@ export class IngressHandler {
       const items = data.map((v: any) => {
         const d_updated = DateTime.fromFormat(v.dUpdate, "yyyyMMddHHmmss")
         v.d_update = d_updated.toFormat('yyyy-MM-dd HH:mm:ss')
-
         v.unit_pack = v.unitPack
         // remove unused field
         delete v.dUpdate
@@ -307,10 +302,9 @@ export class IngressHandler {
 
       const items = data.map((v: any) => {
         const appoint_date = DateTime.fromFormat(v.appointDate, "yyyyMMdd")
-        const appoint_time = DateTime.fromFormat(v.appointTime, "HHmmss")
         const d_updated = DateTime.fromFormat(v.dUpdate, "yyyyMMddHHmmss")
         v.appoint_date = appoint_date.toFormat('yyyy-MM-dd')
-        v.appoint_time = appoint_time.toFormat('HH:mm:ss')
+        v.appoint_time = v.appointTime
         v.d_update = d_updated.toFormat('yyyy-MM-dd HH:mm:ss')
 
         // remove unused field

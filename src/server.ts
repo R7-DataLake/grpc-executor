@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 
 import { IngressHandler } from "./handlers/ingress"
 
-const secret = process.env.R7PLATFORM_GRPC_EXECUTOR_SECRET_KEY || 'notMgRJEnTJWZzM84UCcYfWZOCQHyN2r'
+const secret = process.env.R7PLATFORM_GRPC_EXECUTOR_SECRET_KEY || ''
 
 const ingressHandler = new IngressHandler()
 
