@@ -6,7 +6,7 @@ export class IngressModel {
     const db = await getConnection()
     return db('person')
       .insert(data)
-      .onConflict(['hospcode', 'hn'])
+      .onConflict(['hospcode', 'hn', 'cid'])
       .merge()
   }
 
@@ -84,6 +84,7 @@ export class IngressModel {
       .merge()
   }
 
+  // TODO: Only for OPD
   async saveLab(data: any) {
     const db = await getConnection()
     return db('lab')
