@@ -246,7 +246,7 @@ export class IngressHandler {
     }
   }
 
-  async saveDrug(ctx: any) {
+  async saveOpdDrug(ctx: any) {
     try {
       const data = ctx.req.data
 
@@ -261,7 +261,33 @@ export class IngressHandler {
         return v
       })
 
-      await ingressModel.saveDrug(items)
+      await ingressModel.saveOpdDrug(items)
+      ctx.res = { ok: true }
+    } catch (error) {
+      console.error(error)
+      const code = grpc.status.INTERNAL
+      const message = "INTERNAL ERROR"
+      ctx.status = code
+      return ctx.res = new Error(message)
+    }
+  }
+
+  async saveIpdDrug(ctx: any) {
+    try {
+      const data = ctx.req.data
+
+      const items = data.map((v: any) => {
+        const d_updated = DateTime.fromFormat(v.dUpdate, "yyyyMMddHHmmss")
+        v.d_update = d_updated.toFormat('yyyy-MM-dd HH:mm:ss')
+        v.unit_pack = v.unitPack
+        // remove unused field
+        delete v.dUpdate
+        delete v.unitPack
+
+        return v
+      })
+
+      await ingressModel.saveIpdDrug(items)
       ctx.res = { ok: true }
     } catch (error) {
       console.error(error)
