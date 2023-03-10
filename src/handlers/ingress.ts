@@ -246,7 +246,7 @@ export class IngressHandler {
     }
   }
 
-  async saveOpdDrug(ctx: any) {
+  async saveOpDrug(ctx: any) {
     try {
       const data = ctx.req.data
 
@@ -261,7 +261,7 @@ export class IngressHandler {
         return v
       })
 
-      await ingressModel.saveOpdDrug(items)
+      await ingressModel.saveOpDrug(items)
       ctx.res = { ok: true }
     } catch (error) {
       console.error(error)
@@ -272,7 +272,7 @@ export class IngressHandler {
     }
   }
 
-  async saveIpdDrug(ctx: any) {
+  async saveIpDrug(ctx: any) {
     try {
       const data = ctx.req.data
 
@@ -287,7 +287,7 @@ export class IngressHandler {
         return v
       })
 
-      await ingressModel.saveIpdDrug(items)
+      await ingressModel.saveIpDrug(items)
       ctx.res = { ok: true }
     } catch (error) {
       console.error(error)

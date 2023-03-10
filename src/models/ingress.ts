@@ -68,7 +68,7 @@ export class IngressModel {
 
   // TODO: Error `there is no unique or exclusion constraint matching`
   // OPD vs IPD
-  async saveOpdDrug(data: any) {
+  async saveOpDrug(data: any) {
     const db = await getConnection()
     return db('drug')
       .insert(data)
@@ -76,7 +76,7 @@ export class IngressModel {
       .merge()
   }
 
-  async saveIpdDrug(data: any) {
+  async saveIpDrug(data: any) {
     const db = await getConnection()
     return db('drug')
       .insert(data)
