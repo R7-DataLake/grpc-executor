@@ -70,7 +70,7 @@ export class IngressModel {
   // OPD vs IPD
   async saveOpDrug(data: any) {
     const db = await getConnection()
-    return db('drug')
+    return db('opdrug')
       .insert(data)
       .onConflict(['hospcode', 'hn', 'seq', 'did'])
       .merge()
@@ -78,7 +78,7 @@ export class IngressModel {
 
   async saveIpDrug(data: any) {
     const db = await getConnection()
-    return db('drug')
+    return db('ipdrug')
       .insert(data)
       .onConflict(['hospcode', 'hn', 'an', 'did'])
       .merge()
