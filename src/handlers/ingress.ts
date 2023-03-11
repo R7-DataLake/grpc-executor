@@ -6,16 +6,10 @@ const ingressModel = new IngressModel()
 
 export class IngressHandler {
 
-  setErrorResponse(code: any, message: any) {
-    const err: any = new Error(message)
-    err.code = code
-    throw err
-  }
-
   async savePerson(ctx: any) {
     try {
-      const data = ctx.req.data
 
+      const data = ctx.req.data
       const items = data.map((v: any) => {
         const birth = DateTime.fromFormat(v.birth, "yyyyMMdd")
         const d_updated = DateTime.fromFormat(v.dUpdate, "yyyyMMddHHmmss")
@@ -24,17 +18,17 @@ export class IngressHandler {
         v.d_update = d_updated.toFormat('yyyy-MM-dd HH:mm:ss')
         // remove unused field
         delete v.dUpdate
-
         return v
       })
 
       await ingressModel.savePerson(items)
-      ctx.res = {}
+      ctx.res = { ok: true }
     } catch (error) {
       console.error(error)
       const code = grpc.status.INTERNAL
       const message = "INTERNAL ERROR"
-      this.setErrorResponse(code, message)
+      ctx.status = code
+      return ctx.res = new Error(message)
     }
   }
 
@@ -59,12 +53,13 @@ export class IngressHandler {
       })
 
       await ingressModel.saveChronic(items)
-      ctx.res = {}
+      ctx.res = { ok: true }
     } catch (error) {
       console.error(error)
       const code = grpc.status.INTERNAL
       const message = "INTERNAL ERROR"
-      this.setErrorResponse(code, message)
+      ctx.status = code
+      return ctx.res = new Error(message)
     }
   }
 
@@ -88,6 +83,7 @@ export class IngressHandler {
         // remove unused field
         delete v.dUpdate
         delete v.dateServ
+        delete v.timeServ
         delete v.insType
         delete v.insNumber
         delete v.insHospmain
@@ -98,12 +94,13 @@ export class IngressHandler {
       })
 
       await ingressModel.saveOpd(items)
-      ctx.res = {}
+      ctx.res = { ok: true }
     } catch (error) {
       console.error(error)
       const code = grpc.status.INTERNAL
       const message = "INTERNAL ERROR"
-      this.setErrorResponse(code, message)
+      ctx.status = code
+      return ctx.res = new Error(message)
     }
   }
 
@@ -124,12 +121,13 @@ export class IngressHandler {
       })
 
       await ingressModel.saveOpdx(items)
-      ctx.res = {}
+      ctx.res = { ok: true }
     } catch (error) {
       console.error(error)
       const code = grpc.status.INTERNAL
       const message = "INTERNAL ERROR"
-      this.setErrorResponse(code, message)
+      ctx.status = code
+      return ctx.res = new Error(message)
     }
   }
 
@@ -150,12 +148,13 @@ export class IngressHandler {
       })
 
       await ingressModel.saveOpop(items)
-      ctx.res = {}
+      ctx.res = { ok: true }
     } catch (error) {
       console.error(error)
       const code = grpc.status.INTERNAL
       const message = "INTERNAL ERROR"
-      this.setErrorResponse(code, message)
+      ctx.status = code
+      return ctx.res = new Error(message)
     }
   }
 
@@ -165,15 +164,11 @@ export class IngressHandler {
 
       const items = data.map((v: any) => {
         const dateadm = DateTime.fromFormat(v.dateadm, "yyyyMMdd")
-        const timeadm = DateTime.fromFormat(v.timeadm, "HHmm")
         const datedsc = DateTime.fromFormat(v.datedsc, "yyyyMMdd")
-        const timedsc = DateTime.fromFormat(v.timedsc, "HHmm")
         const d_updated = DateTime.fromFormat(v.dUpdate, "yyyyMMddHHmmss")
 
         v.dateadm = dateadm.toFormat('yyyy-MM-dd')
         v.datedsc = datedsc.toFormat('yyyy-MM-dd')
-        v.timeadm = timeadm.toFormat('HH:mm')
-        v.timedsc = timedsc.toFormat('HH:mm')
         v.adm_w = v.admW
         v.d_update = d_updated.toFormat('yyyy-MM-dd HH:mm:ss')
         // remove unused field
@@ -184,12 +179,13 @@ export class IngressHandler {
       })
 
       await ingressModel.saveIpd(items)
-      ctx.res = {}
+      ctx.res = { ok: true }
     } catch (error) {
       console.error(error)
       const code = grpc.status.INTERNAL
       const message = "INTERNAL ERROR"
-      this.setErrorResponse(code, message)
+      ctx.status = code
+      return ctx.res = new Error(message)
     }
   }
 
@@ -207,12 +203,13 @@ export class IngressHandler {
       })
 
       await ingressModel.saveIpdx(items)
-      ctx.res = {}
+      ctx.res = { ok: true }
     } catch (error) {
       console.error(error)
       const code = grpc.status.INTERNAL
       const message = "INTERNAL ERROR"
-      this.setErrorResponse(code, message)
+      ctx.status = code
+      return ctx.res = new Error(message)
     }
   }
 
@@ -239,23 +236,23 @@ export class IngressHandler {
       })
 
       await ingressModel.saveIpop(items)
-      ctx.res = {}
+      ctx.res = { ok: true }
     } catch (error) {
       console.error(error)
       const code = grpc.status.INTERNAL
       const message = "INTERNAL ERROR"
-      this.setErrorResponse(code, message)
+      ctx.status = code
+      return ctx.res = new Error(message)
     }
   }
 
-  async saveDrug(ctx: any) {
+  async saveOpDrug(ctx: any) {
     try {
       const data = ctx.req.data
 
       const items = data.map((v: any) => {
         const d_updated = DateTime.fromFormat(v.dUpdate, "yyyyMMddHHmmss")
         v.d_update = d_updated.toFormat('yyyy-MM-dd HH:mm:ss')
-
         v.unit_pack = v.unitPack
         // remove unused field
         delete v.dUpdate
@@ -264,13 +261,40 @@ export class IngressHandler {
         return v
       })
 
-      await ingressModel.saveDrug(items)
-      ctx.res = {}
+      await ingressModel.saveOpDrug(items)
+      ctx.res = { ok: true }
     } catch (error) {
       console.error(error)
       const code = grpc.status.INTERNAL
       const message = "INTERNAL ERROR"
-      this.setErrorResponse(code, message)
+      ctx.status = code
+      return ctx.res = new Error(message)
+    }
+  }
+
+  async saveIpDrug(ctx: any) {
+    try {
+      const data = ctx.req.data
+
+      const items = data.map((v: any) => {
+        const d_updated = DateTime.fromFormat(v.dUpdate, "yyyyMMddHHmmss")
+        v.d_update = d_updated.toFormat('yyyy-MM-dd HH:mm:ss')
+        v.unit_pack = v.unitPack
+        // remove unused field
+        delete v.dUpdate
+        delete v.unitPack
+
+        return v
+      })
+
+      await ingressModel.saveIpDrug(items)
+      ctx.res = { ok: true }
+    } catch (error) {
+      console.error(error)
+      const code = grpc.status.INTERNAL
+      const message = "INTERNAL ERROR"
+      ctx.status = code
+      return ctx.res = new Error(message)
     }
   }
 
@@ -288,12 +312,13 @@ export class IngressHandler {
       })
 
       await ingressModel.saveLab(items)
-      ctx.res = {}
+      ctx.res = { ok: true }
     } catch (error) {
       console.error(error)
       const code = grpc.status.INTERNAL
       const message = "INTERNAL ERROR"
-      this.setErrorResponse(code, message)
+      ctx.status = code
+      return ctx.res = new Error(message)
     }
   }
 
@@ -303,10 +328,9 @@ export class IngressHandler {
 
       const items = data.map((v: any) => {
         const appoint_date = DateTime.fromFormat(v.appointDate, "yyyyMMdd")
-        const appoint_time = DateTime.fromFormat(v.appointTime, "HHmmss")
         const d_updated = DateTime.fromFormat(v.dUpdate, "yyyyMMddHHmmss")
         v.appoint_date = appoint_date.toFormat('yyyy-MM-dd')
-        v.appoint_time = appoint_time.toFormat('HH:mm:ss')
+        v.appoint_time = v.appointTime
         v.d_update = d_updated.toFormat('yyyy-MM-dd HH:mm:ss')
 
         // remove unused field
@@ -318,12 +342,13 @@ export class IngressHandler {
       })
 
       await ingressModel.saveAppoint(items)
-      ctx.res = {}
+      ctx.res = { ok: true }
     } catch (error) {
       console.error(error)
       const code = grpc.status.INTERNAL
       const message = "INTERNAL ERROR"
-      this.setErrorResponse(code, message)
+      ctx.status = code
+      return ctx.res = new Error(message)
     }
   }
 
@@ -344,12 +369,13 @@ export class IngressHandler {
       })
 
       await ingressModel.saveDrugallergy(items)
-      ctx.res = {}
+      ctx.res = { ok: true }
     } catch (error) {
       console.error(error)
       const code = grpc.status.INTERNAL
       const message = "INTERNAL ERROR"
-      this.setErrorResponse(code, message)
+      ctx.status = code
+      return ctx.res = new Error(message)
     }
   }
 

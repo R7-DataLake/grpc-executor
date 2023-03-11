@@ -6,7 +6,7 @@ export class IngressModel {
     const db = await getConnection()
     return db('person')
       .insert(data)
-      .onConflict(['hospcode', 'hn'])
+      .onConflict(['hospcode', 'hn', 'cid'])
       .merge()
   }
 
@@ -66,14 +66,25 @@ export class IngressModel {
       .merge()
   }
 
-  async saveDrug(data: any) {
+  // TODO: Error `there is no unique or exclusion constraint matching`
+  // OPD vs IPD
+  async saveOpDrug(data: any) {
     const db = await getConnection()
-    return db('drug')
+    return db('opdrug')
+      .insert(data)
+      .onConflict(['hospcode', 'hn', 'seq', 'did'])
+      .merge()
+  }
+
+  async saveIpDrug(data: any) {
+    const db = await getConnection()
+    return db('ipdrug')
       .insert(data)
       .onConflict(['hospcode', 'hn', 'an', 'did'])
       .merge()
   }
 
+  // TODO: Only for OPD
   async saveLab(data: any) {
     const db = await getConnection()
     return db('lab')
