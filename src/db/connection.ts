@@ -1,5 +1,6 @@
+import { Knex } from "knex"
 
-export default async () => {
+export default async (): Promise<Knex<any, any[]>> => {
   return require('knex')({
     client: 'pg',
     connection: {
