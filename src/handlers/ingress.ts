@@ -37,17 +37,21 @@ export class IngressHandler {
       const data = ctx.req.data
 
       const items = data.map((v: any) => {
-        const date_diag = DateTime.fromFormat(v.dateDiag, "yyyyMMdd")
-        const date_disch = DateTime.fromFormat(v.dateDisch, "yyyyMMdd")
-        const d_updated = DateTime.fromFormat(v.dUpdate, "yyyyMMddHHmmss")
+        const date_diag = v.dateDiag ? DateTime.fromFormat(v.dateDiag, "yyyyMMdd").toFormat('yyyy-MM-dd') : null;
+        const date_disch = v.dateDisch ? DateTime.fromFormat(v.dateDisch, "yyyyMMdd").toFormat('yyyy-MM-dd') : null;
+        const d_updated = DateTime.fromFormat(v.dUpdate, "yyyyMMddHHmmss").toFormat('yyyy-MM-dd HH:mm:ss')
 
-        v.date_diag = date_diag.toFormat('yyyy-MM-dd')
-        v.date_disch = date_disch.toFormat('yyyy-MM-dd')
-        v.d_update = d_updated.toFormat('yyyy-MM-dd HH:mm:ss')
+        v.hosp_dx = v.hospDx;
+        v.hosp_rx = v.hospRx;
+        v.date_diag = date_diag;
+        v.date_disch = date_disch;
+        v.d_update = d_updated;
         // remove unused field
-        delete v.dateDiag
-        delete v.dateDisch
-        delete v.dUpdate
+        delete v.dateDiag;
+        delete v.dateDisch;
+        delete v.hospDx;
+        delete v.hospRx;
+        delete v.dUpdate;
 
         return v
       })
