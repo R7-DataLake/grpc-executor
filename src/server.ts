@@ -67,6 +67,7 @@ const main = () => {
   app.use('SaveLab', ingressHandler.saveLab)
   app.use('SaveAppoint', ingressHandler.saveAppoint)
   app.use('SaveDrugallergy', ingressHandler.saveDrugallergy)
+  app.use('Test', ingressHandler.test)
 
   // Start app
   app.start(HOSTPORT)
