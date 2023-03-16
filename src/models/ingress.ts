@@ -199,4 +199,16 @@ export class IngressModel {
     });
   }
 
+  async test() {
+    const db = await getConnection();
+    return new Promise((resolve: any, reject: any) => {
+      db.raw('SELECT 1 + 1')
+        .then(() => resolve())
+        .catch((error: any) => reject(error))
+        .finally(async () => {
+          await db.destroy();
+        });
+    });
+  }
+
 }

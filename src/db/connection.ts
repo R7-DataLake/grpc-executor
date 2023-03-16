@@ -11,6 +11,6 @@ export default async (): Promise<Knex<any, any[]>> => {
       database: process.env.R7PLATFORM_GRPC_EXECUTOR_DB_NAME || 'test',
     },
     searchPath: [process.env.R7PLATFORM_GRPC_EXECUTOR_DB_SCHEMA || 'public'],
-    debug: process.env.R7PLATFORM_GRPC_EXECUTOR_DB_DEBUG === "Y" ? true : false,
+    debug: process.env.NODE_ENV === "production" ? false : true,
   })
 }
