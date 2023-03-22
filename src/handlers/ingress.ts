@@ -23,12 +23,12 @@ export class IngressHandler {
 
       await ingressModel.savePerson(items)
       ctx.res = { ok: true }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error)
-      const code = grpc.status.INTERNAL
-      const message = "INTERNAL ERROR"
-      ctx.status = code
-      return ctx.res = new Error(message)
+      const message = error.message
+      const err: any = new Error(message)
+      err.code = grpc.status.INTERNAL
+      throw err;
     }
   }
 
@@ -37,29 +37,33 @@ export class IngressHandler {
       const data = ctx.req.data
 
       const items = data.map((v: any) => {
-        const date_diag = DateTime.fromFormat(v.dateDiag, "yyyyMMdd")
-        const date_disch = DateTime.fromFormat(v.dateDisch, "yyyyMMdd")
-        const d_updated = DateTime.fromFormat(v.dUpdate, "yyyyMMddHHmmss")
+        const date_diag = v.dateDiag ? DateTime.fromFormat(v.dateDiag, "yyyyMMdd").toFormat('yyyy-MM-dd') : null;
+        const date_disch = v.dateDisch ? DateTime.fromFormat(v.dateDisch, "yyyyMMdd").toFormat('yyyy-MM-dd') : null;
+        const d_updated = DateTime.fromFormat(v.dUpdate, "yyyyMMddHHmmss").toFormat('yyyy-MM-dd HH:mm:ss')
 
-        v.date_diag = date_diag.toFormat('yyyy-MM-dd')
-        v.date_disch = date_disch.toFormat('yyyy-MM-dd')
-        v.d_update = d_updated.toFormat('yyyy-MM-dd HH:mm:ss')
+        v.hosp_dx = v.hospDx;
+        v.hosp_rx = v.hospRx;
+        v.date_diag = date_diag;
+        v.date_disch = date_disch;
+        v.d_update = d_updated;
         // remove unused field
-        delete v.dateDiag
-        delete v.dateDisch
-        delete v.dUpdate
+        delete v.dateDiag;
+        delete v.dateDisch;
+        delete v.hospDx;
+        delete v.hospRx;
+        delete v.dUpdate;
 
         return v
       })
 
       await ingressModel.saveChronic(items)
       ctx.res = { ok: true }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error)
-      const code = grpc.status.INTERNAL
-      const message = "INTERNAL ERROR"
-      ctx.status = code
-      return ctx.res = new Error(message)
+      const message = error.message
+      const err: any = new Error(message)
+      err.code = grpc.status.INTERNAL
+      throw err;
     }
   }
 
@@ -95,12 +99,12 @@ export class IngressHandler {
 
       await ingressModel.saveOpd(items)
       ctx.res = { ok: true }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error)
-      const code = grpc.status.INTERNAL
-      const message = "INTERNAL ERROR"
-      ctx.status = code
-      return ctx.res = new Error(message)
+      const message = error.message
+      const err: any = new Error(message)
+      err.code = grpc.status.INTERNAL
+      throw err;
     }
   }
 
@@ -122,12 +126,12 @@ export class IngressHandler {
 
       await ingressModel.saveOpdx(items)
       ctx.res = { ok: true }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error)
-      const code = grpc.status.INTERNAL
-      const message = "INTERNAL ERROR"
-      ctx.status = code
-      return ctx.res = new Error(message)
+      const message = error.message
+      const err: any = new Error(message)
+      err.code = grpc.status.INTERNAL
+      throw err;
     }
   }
 
@@ -149,12 +153,12 @@ export class IngressHandler {
 
       await ingressModel.saveOpop(items)
       ctx.res = { ok: true }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error)
-      const code = grpc.status.INTERNAL
-      const message = "INTERNAL ERROR"
-      ctx.status = code
-      return ctx.res = new Error(message)
+      const message = error.message
+      const err: any = new Error(message)
+      err.code = grpc.status.INTERNAL
+      throw err;
     }
   }
 
@@ -180,12 +184,12 @@ export class IngressHandler {
 
       await ingressModel.saveIpd(items)
       ctx.res = { ok: true }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error)
-      const code = grpc.status.INTERNAL
-      const message = "INTERNAL ERROR"
-      ctx.status = code
-      return ctx.res = new Error(message)
+      const message = error.message
+      const err: any = new Error(message)
+      err.code = grpc.status.INTERNAL
+      throw err;
     }
   }
 
@@ -204,12 +208,12 @@ export class IngressHandler {
 
       await ingressModel.saveIpdx(items)
       ctx.res = { ok: true }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error)
-      const code = grpc.status.INTERNAL
-      const message = "INTERNAL ERROR"
-      ctx.status = code
-      return ctx.res = new Error(message)
+      const message = error.message
+      const err: any = new Error(message)
+      err.code = grpc.status.INTERNAL
+      throw err;
     }
   }
 
@@ -237,12 +241,12 @@ export class IngressHandler {
 
       await ingressModel.saveIpop(items)
       ctx.res = { ok: true }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error)
-      const code = grpc.status.INTERNAL
-      const message = "INTERNAL ERROR"
-      ctx.status = code
-      return ctx.res = new Error(message)
+      const message = error.message
+      const err: any = new Error(message)
+      err.code = grpc.status.INTERNAL
+      throw err;
     }
   }
 
@@ -263,12 +267,12 @@ export class IngressHandler {
 
       await ingressModel.saveOpDrug(items)
       ctx.res = { ok: true }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error)
-      const code = grpc.status.INTERNAL
-      const message = "INTERNAL ERROR"
-      ctx.status = code
-      return ctx.res = new Error(message)
+      const message = error.message
+      const err: any = new Error(message)
+      err.code = grpc.status.INTERNAL
+      throw err;
     }
   }
 
@@ -289,12 +293,12 @@ export class IngressHandler {
 
       await ingressModel.saveIpDrug(items)
       ctx.res = { ok: true }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error)
-      const code = grpc.status.INTERNAL
-      const message = "INTERNAL ERROR"
-      ctx.status = code
-      return ctx.res = new Error(message)
+      const message = error.message
+      const err: any = new Error(message)
+      err.code = grpc.status.INTERNAL
+      throw err;
     }
   }
 
@@ -313,12 +317,12 @@ export class IngressHandler {
 
       await ingressModel.saveLab(items)
       ctx.res = { ok: true }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error)
-      const code = grpc.status.INTERNAL
-      const message = "INTERNAL ERROR"
-      ctx.status = code
-      return ctx.res = new Error(message)
+      const message = error.message
+      const err: any = new Error(message)
+      err.code = grpc.status.INTERNAL
+      throw err;
     }
   }
 
@@ -343,12 +347,12 @@ export class IngressHandler {
 
       await ingressModel.saveAppoint(items)
       ctx.res = { ok: true }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error)
-      const code = grpc.status.INTERNAL
-      const message = "INTERNAL ERROR"
-      ctx.status = code
-      return ctx.res = new Error(message)
+      const message = error.message
+      const err: any = new Error(message)
+      err.code = grpc.status.INTERNAL
+      throw err;
     }
   }
 
@@ -370,12 +374,27 @@ export class IngressHandler {
 
       await ingressModel.saveDrugallergy(items)
       ctx.res = { ok: true }
-    } catch (error) {
+    } catch (error: any) {
+      console.error(error)
+      const message = error.message
+      const err: any = new Error(message)
+      err.code = grpc.status.INTERNAL
+      throw err;
+    }
+  }
+
+  async test(ctx: any) {
+    try {
+      await ingressModel.test();
+      ctx.res = { ok: true }
+    } catch (error: any) {
       console.error(error)
       const code = grpc.status.INTERNAL
-      const message = "INTERNAL ERROR"
+      const message = error.message
       ctx.status = code
-      return ctx.res = new Error(message)
+      const err: any = new Error(message)
+      err.code = grpc.status.INTERNAL
+      throw err;
     }
   }
 
